@@ -188,7 +188,7 @@ class _DadosPageState extends State<DadosPage> {
                   Icons.add_business_outlined,
                   color: Colors.brown,
                 ),
-                title: const Text("Lugares à Visitar"),
+                title: const Text("Lugares à visitar"),
                 subtitle: const Text("Lugares para conhecer..."),
                 trailing: const Icon(
                   Icons.arrow_circle_right_outlined,
@@ -204,7 +204,7 @@ class _DadosPageState extends State<DadosPage> {
                   Icons.add_reaction_outlined,
                   color: Colors.brown,
                 ),
-                title: const Text("Restaurante Avaliados"),
+                title: const Text("Restaurantes avaliados"),
                 subtitle: const Text("Lugares que já fui..."),
                 trailing: const Icon(
                   Icons.arrow_circle_right_outlined,
