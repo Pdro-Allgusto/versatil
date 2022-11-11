@@ -54,7 +54,7 @@ class _VisitadosState extends State<Visitados> {
                             Navigator.pop(inContext);
                             atualizarListaAvaliados();
                           },
-                          child: Text('Não'),
+                          child: const Text('Não'),
                         ),
                         TextButton(
                           onPressed: () {
@@ -62,7 +62,7 @@ class _VisitadosState extends State<Visitados> {
                             Navigator.pop(inContext);
                             atualizarListaAvaliados();
                           },
-                          child: Text('Sim'),
+                          child: const Text('Sim'),
                         ),
                       ],
                     ),
@@ -94,7 +94,7 @@ class _VisitadosState extends State<Visitados> {
         onPressed: () {
           exibeAvaliadoPage();
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

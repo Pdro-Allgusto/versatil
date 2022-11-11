@@ -5,24 +5,24 @@ import 'package:path/path.dart';
 import 'Avaliados.dart';
 
 // ATENÇÃO: fazer o import de produto.dart
+// ignore: camel_case_types
 class locaisAvaliadosDAO {
   static locaisAvaliadosDAO? _avaliadoDao;
   static Database? _database;
   locaisAvaliadosDAO._createInstance();
   factory locaisAvaliadosDAO() {
-    if (_avaliadoDao == null)
-      _avaliadoDao = locaisAvaliadosDAO._createInstance();
+    _avaliadoDao ??= locaisAvaliadosDAO._createInstance();
     return _avaliadoDao!;
   }
   Future<Database> get database async {
-    if (_database == null) _database = await initializeDatabase();
+    _database ??= await initializeDatabase();
     return _database!;
   }
 
   Future<Database> initializeDatabase() async {
-    String _databaseName = 'avaliado.db';
+    String databaseName = 'avaliado.db';
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = join(directory.path, _databaseName);
+    String path = join(directory.path, databaseName);
     var produtosDatabase =
         await openDatabase(path, version: 1, onCreate: _createDb);
     return produtosDatabase;

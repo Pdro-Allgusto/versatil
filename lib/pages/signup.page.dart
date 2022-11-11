@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:versatil/pages/validation.dart';
 import 'package:versatil/pessoa.dart';
-import 'package:versatil/pages/data.page.dart';
 import 'package:versatil/routes.dart';
 
 class SignupPage extends StatelessWidget {
@@ -14,7 +13,7 @@ class SignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 70, 53, 33),
+        backgroundColor: const Color.fromARGB(255, 70, 53, 33),
         primary: true,
         title: const Text('Página de Cadastro',
             style: TextStyle(
@@ -161,14 +160,11 @@ class SignupPage extends StatelessWidget {
 
   void _onSubmit(inContext) {
     if (_formKey.currentState!.validate()) {
-      print('Formulário Validado!');
-
       _formKey.currentState?.save();
 
       Navigator.of(inContext)
           .pushNamed(Routes.PAGINA_DADOS, arguments: usuario);
     } else {
-      print('********* Formulário com erros. ********');
       showDialog(
         context: inContext,
         barrierDismissible: false,
@@ -176,19 +172,19 @@ class SignupPage extends StatelessWidget {
           return WillPopScope(
             onWillPop: () async => false,
             child: AlertDialog(
-              title: Text('Dados Inválidos!'),
+              title: const Text('Dados Inválidos!'),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(inContext);
                   },
-                  child: Text('Cancelar'),
+                  child: const Text('Cancelar'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(inContext);
                   },
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             ),

@@ -34,7 +34,7 @@ class _DadosPageState extends State<DadosPage> {
     final pessoa = ModalRoute.of(context)?.settings.arguments as Pessoa;
     if (pessoa.nome == null) {
       pessoa.nome = 'Gustavo';
-      pessoa.sobrenome = 'pedrosa';
+      pessoa.sobrenome = 'Pedrosa';
     }
 
     return Scaffold(
@@ -61,7 +61,7 @@ class _DadosPageState extends State<DadosPage> {
                     ),
                     secondaryBackground: Container(
                       color: Colors.green,
-                      child: Align(
+                      child: const Align(
                         alignment: Alignment(0.9, 0),
                         child: Icon(
                           Icons.check,
@@ -179,6 +179,7 @@ class _DadosPageState extends State<DadosPage> {
                   style: const TextStyle(fontSize: 17),
                 ),
                 currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
                   backgroundImage: AssetImage('assets/images/logo_interna.png'),
                 ),
               ),
@@ -212,7 +213,6 @@ class _DadosPageState extends State<DadosPage> {
                 onTap: () {
                   Navigator.of(context)
                       .pushNamed(Routes.PAGINA_VISITADOS, arguments: null);
-                  print("Restaurante avaliados");
                 },
               ),
               ListTile(
@@ -232,8 +232,6 @@ class _DadosPageState extends State<DadosPage> {
                       builder: (context) => LoginPage(),
                     ),
                   );
-
-                  print("Anúncios");
                 },
               ),
             ],
@@ -253,14 +251,11 @@ class _DadosPageState extends State<DadosPage> {
         _listaTarefas.add(novaTarefa);
         db.saveData(_listaTarefas);
       });
-      print('Tarefa adicionada!!!!');
-    } else {
-      print('Sem Tarefa preenchida');
-    }
+    } else {}
   }
 
   Future<void> _atualiza() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     setState(() {
       _listaTarefas.sort((a, b) {
         return (a['ok'].toString()).compareTo(b['ok'].toString());
