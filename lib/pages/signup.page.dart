@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:versatil/pages/validation.dart';
 import 'package:versatil/pessoa.dart';
 import 'package:versatil/pages/data.page.dart';
 import 'package:versatil/routes.dart';
-
 
 class SignupPage extends StatelessWidget {
   SignupPage({Key? key}) : super(key: key);
@@ -16,14 +14,19 @@ class SignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Página de Cadastro'),
+        backgroundColor: Color.fromARGB(255, 70, 53, 33),
+        primary: true,
+        title: const Text('Página de Cadastro',
+            style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+            )),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Container(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(top: 120, left: 50, right: 50),
             child: Column(
               children: [
                 TextFormField(
@@ -122,7 +125,7 @@ class SignupPage extends StatelessWidget {
                             color: Color.fromARGB(255, 145, 123, 99))),
                   ),
                   textInputAction: TextInputAction.done,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   validator: (senha) => validar.campoSenha(senha.toString()),
                   onSaved: (String? value) {
                     usuario.senha = value;
@@ -134,13 +137,15 @@ class SignupPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
-                  height: 60,
+                  height: 40,
                   child: ElevatedButton(
-                    child: const Text('Cadastrar'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        textStyle: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
+                        primary: const Color.fromARGB(255, 70, 53, 33),
+                        onPrimary: const Color.fromARGB(255, 255, 255, 255)),
+                    child: const Text(
+                      "Cadastre-se",
+                      textAlign: TextAlign.center,
+                    ),
                     onPressed: () {
                       _onSubmit(context);
                     },
@@ -158,10 +163,10 @@ class SignupPage extends StatelessWidget {
     if (_formKey.currentState!.validate()) {
       print('Formulário Validado!');
 
-      _formKey.currentState!.save();
+      _formKey.currentState?.save();
 
-      Navigator.of(inContext).pushNamed(Routes.PAGINA_DADOS, arguments: usuario);
-
+      Navigator.of(inContext)
+          .pushNamed(Routes.PAGINA_DADOS, arguments: usuario);
     } else {
       print('********* Formulário com erros. ********');
       showDialog(

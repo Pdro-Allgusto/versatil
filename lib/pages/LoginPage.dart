@@ -1,172 +1,170 @@
-import 'package:versatil/pages/reset-password.page.dart';
-import 'package:versatil/pages/home.page.dart';
 import 'package:versatil/pages/signup.page.dart';
-
 import 'package:flutter/material.dart';
+import 'package:versatil/pages/validation.dart';
+import '../pessoa.dart';
+import '../routes.dart';
 
 class LoginPage extends StatelessWidget {
+  final Validation validar = Validation();
+  final _formKey = GlobalKey<FormState>();
+  final Pessoa usuario = Pessoa();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 60, left: 40, right: 40),
-        color: Colors.white,
-        child: ListView(
-          children: <Widget>[
-            SizedBox(
-              width: 128,
-              height: 128,
-              child: Image.asset("assets/images/logo.png"),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              autofocus: true,
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                labelText: "E-mail",
-                hintText: "Entre com seu e-mail",
-                focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromARGB(255, 145, 123, 99))),
-                
-                
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w100,
-                    fontSize: 15.0,
-                    color: Color.fromARGB(255, 179, 179, 179)),
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
+          padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
+          color: Colors.white,
+          child: ListView(
+            children: <Widget>[
+              SizedBox(
+                width: 128,
+                height: 128,
+                child: Image.asset("assets/images/logo.png"),
               ),
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              autofocus: true,
-              keyboardType: TextInputType.number,
-              textInputAction: TextInputAction.done,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Senha",
-                hintText: "insira sua senha",
-                 focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromARGB(255, 145, 123, 99))),
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w100,
-                    fontSize: 15.0,
-                    color: Color.fromARGB(255, 179, 179, 179)),
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
+              const SizedBox(
+                height: 20,
               ),
-              style: TextStyle(fontSize: 20),
-            ),
-            Container(
-              height: 40,
-              alignment: Alignment.centerRight,
-              child: ElevatedButton(
-                child: Text(
-                  "Recuperar senha",
-                  textAlign: TextAlign.right,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResetPasswordPage(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 143, 119, 92), onPrimary: Color.fromARGB(255, 226, 226, 226)),
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              height: 60,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.3, 1],
-                  colors: [
-                    Color.fromARGB(255, 70, 53, 33),
-                    Color.fromARGB(255, 145, 123, 99),
-                  ],
-                ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
-              child: SizedBox.expand(
-                child: OutlinedButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 20,
+              Form(
+                key: _formKey,
+                child: Container(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'E-mail',
+                          hintText: 'Entre com seu e-mail',
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w100,
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 179, 179, 179)),
+                          labelStyle: TextStyle(
+                            color: Colors.black38,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 145, 123, 99))),
                         ),
-                        textAlign: TextAlign.left,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (email) =>
+                            validar.campoEmailLogin(email.toString()),
+                        onSaved: (String? value) {
+                          usuario.email = value;
+                        },
                       ),
-                      Container(
-                        child: SizedBox(
-                          child: Image.asset("assets/images/login.png"),
-                          height: 28,
-                          width: 28,
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Senha',
+                          hintText: 'Entre com sua senha',
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w100,
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 179, 179, 179)),
+                          labelStyle: TextStyle(
+                            color: Colors.black38,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 145, 123, 99))),
+                        ),
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.text,
+                        validator: (senha) =>
+                            validar.campoSenhaLogin(senha.toString()),
+                        onFieldSubmitted: (value) {
+                          _onSubmit(context);
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 40,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: const Color.fromARGB(255, 70, 53, 33),
+                              onPrimary:
+                                  const Color.fromARGB(255, 255, 255, 255)),
+                          child: const Text(
+                            "Login",
+                            textAlign: TextAlign.center,
+                          ),
+                          onPressed: () {
+                            _onSubmit(context);
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 70, 53, 33),
+                              onPrimary: Color.fromARGB(255, 255, 255, 255)),
+                          child: const Text(
+                            "Cadastre-se",
+                            textAlign: TextAlign.center,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(
+                                Routes.PAGINA_CADASTRO,
+                                arguments: null);
+                          },
                         ),
                       )
                     ],
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
-                  },
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 40,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary:Color.fromARGB(255, 70, 53, 33), onPrimary: Color.fromARGB(255, 255, 255, 255)),
-                child: Text(
-                  "Cadastre-se",
-                  textAlign: TextAlign.center,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignupPage(),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+            ],
+          )),
     );
+  }
+
+  void _onSubmit(inContext) {
+    if (_formKey.currentState!.validate()) {
+      print('Formulário Validado!');
+
+      _formKey.currentState!.save();
+
+      Navigator.of(inContext)
+          .pushNamed(Routes.PAGINA_DADOS, arguments: usuario);
+    } else {
+      print('********* Formulário com erros. ********');
+      showDialog(
+        context: inContext,
+        barrierDismissible: false,
+        builder: (inContext) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text('Dados Inválidos!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(inContext);
+                  },
+                  child: Text('Cancelar'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(inContext);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
   }
 }
