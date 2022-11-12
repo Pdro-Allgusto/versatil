@@ -4,8 +4,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'Avaliados.dart';
 
-// ATENÇÃO: fazer o import de produto.dart
-// ignore: camel_case_types
 class locaisAvaliadosDAO {
   static locaisAvaliadosDAO? _avaliadoDao;
   static Database? _database;
