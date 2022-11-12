@@ -32,11 +32,11 @@ class Validation {
     if (senha.isEmpty) {
       return 'Entre com sua senha.';
     }
-    if (!truee.hasMatch(senha)) {
-      return 'Letra maiúscula e minúscula, numero e caracter especiais.';
-    }
     if (senha.length < 8) {
       return 'A senha deve ter no mínimo 8 dígitos.';
+    }
+    if (!truee.hasMatch(senha)) {
+      return 'Letra maiúscula e minúscula, numero e caracter especiais.';
     }
 
     return null;
