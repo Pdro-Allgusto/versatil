@@ -1,16 +1,43 @@
-# versatil
 
-A new Flutter project.
+# Versatil - Trabalho Desenvolvimeto para Dispositvos Movéis
 
-## Getting Started
+Este é um projeto de um aplicativo para execução do trabalho de desenvolvimento mobile, proposto no 4° periodo de Ciencias da Computação, na faculdade Dom Helder Câmara.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Utilidades
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Lista lugares a visitar
+- Avaliar lugares já visitados
+
+
+
+## Rodando os testes
+
+Para rodar com o login, rode apenas o seguinte usuário ou realize o cadastro: 
+
+```bash
+  login: teste@email.com    
+  senha: Teste@123
+```
+
+
+## Demonstração
+
+https://www.youtube.com/watch?v=ymPRIGCK1Hc
+
+
+## Stack utilizada
+
+* Flutter
+* Sqflite
+* Dart 
+
+
+## Autores
+
+- [Gustavo Pedrosa](https://github.com/Gustavo-hgp)
+- [Pedro Augusto Morais](https://github.com/Pdro-Allgusto)
+- [Bernardo Cabral](https://github.com/Benkars)
+- [@octokatherine](https://www.github.com/gustavo_hgp)
+
