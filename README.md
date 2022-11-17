@@ -39,5 +39,5 @@ https://www.youtube.com/watch?v=ymPRIGCK1Hc
 - [Gustavo Pedrosa](https://github.com/Gustavo-hgp)
 - [Pedro Augusto Morais](https://github.com/Pdro-Allgusto)
 - [Bernardo Cabral](https://github.com/Benkars)
-- [Gabriel Fochat Mol Araujo](https://www.github.com/gustavo_hgp)
+- [Gabriel Fochat Mol Araujo](http://github.com/fochatt)
 
